@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>
+            JSON(JavaScript Object Notation) : 텍스트 데이터를 사용하여 <br />
+            데이터를 전송하고, 전송, 데이터 공유를 위한 개방형 표준 파일 형식
+
+            <!-- 파일확장자 개념 -->
+        </h1>
+        <ul>
+            <li>
+                데이터 구조화 : 많은 양의 데이터가 실시간으로 전달되어야 할 때
+                가장 효율적인 방식
+            </li>
+            <li>
+                구조화 된 텍스트를 만들기 위해 JSON 데이터를 많이 활용하고 있음
+            </li>
+            <li>
+                자바 스크립트의 객체 형식을 갖고 있기 때문에 구조 파악이 쉽고,
+                제작도 쉽다.
+            </li>
+            <li>
+                특히 웹 분야의 자바 스크립트가 모든 프론트에 호환이 된다는 점을
+                활용
+            </li>
+            <li>
+                데이터 수집, 출력용으로 거의 모든 플랫폼 서비스에서 사용되고
+                있음
+            </li>
+        </ul>
+
+        <script>
+            //https://finance.naver.com/ 의 top종목의 데이터를 구조화 해보기 => JSON형식으로...
+
+            const top = {
+                거래상위: [
+                    {
+                        name: "KODEX 코스닥150선물",
+                        price: 3545,
+                        upDown: 155,
+                        ratio: 4.57,
+                    },
+                    {
+                        name: "KODEX 200선물인버스",
+                        price: 2470,
+                        upDown: 110,
+                        ratio: 4.66,
+                    },
+                    {
+                        name: "상보",
+                        price: 2095,
+                        upDown: 385,
+                        ratio: 22.3,
+                    },
+                    {
+                        name: "신성이엔지",
+                        price: 2830,
+                        upDown: 15,
+                        ratio: 0.53,
+                    },
+                    {
+                        name: "크리스탈신소재",
+                        price: 3050,
+                        upDown: 415,
+                        ratio: 15.75,
+                    },
+                ],
+                상승: [
+                    {
+                        name: "서남",
+                        price: 8450,
+                        upDown: 1950,
+                        ratio: 30.0,
+                    },
+                    {
+                        name: "LS전선아시아",
+                        price: 10490,
+                        upDown: 2420,
+                        ratio: 29.99,
+                    },
+                    {
+                        name: "서원",
+                        price: 1708,
+                        upDown: 394,
+                        ratio: 29.98,
+                    },
+                    {
+                        name: "모비스",
+                        price: 3685,
+                        upDown: 850,
+                        ratio: 29.98,
+                    },
+                    {
+                        name: "덕성",
+                        price: 7460,
+                        upDown: 1720,
+                        ratio: 29.97,
+                    },
+                ],
+                하락: [
+                    {
+                        name: "바이온",
+                        price: 1658,
+                        upDown: -367,
+                        ratio: -18.12,
+                    },
+                    {
+                        name: "에스코넥",
+                        price: 1780,
+                        upDown: -360,
+                        ratio: -16.82,
+                    },
+                    {
+                        name: "피에스케이홀딩스",
+                        price: 27750,
+                        upDown: -4800,
+                        ratio: -14.75,
+                    },
+                    {
+                        name: "엔비티",
+                        price: 7210,
+                        upDown: -1210,
+                        ratio: -14.37,
+                    },
+                    {
+                        name: "HB솔루션",
+                        price: 4965,
+                        upDown: -805,
+                        ratio: -13.95,
+                    },
+                ],
+                시가총액상위: [
+                    {
+                        name: "삼성전자",
+                        price: 69900,
+                        upDown: -1200,
+                        ratio: -1.69,
+                    },
+                    {
+                        name: "LG에너지",
+                        price: 544000,
+                        upDown: -13000,
+                        ratio: -2.33,
+                    },
+                    {
+                        name: "SK하이닉스",
+                        price: 119500,
+                        upDown: -5600,
+                        ratio: -4.48,
+                    },
+                    {
+                        name: "삼성바이오로직스",
+                        price: 789000,
+                        upDown: -13000,
+                        ratio: -1.62,
+                    },
+                    {
+                        name: "POSCO",
+                        price: 585000,
+                        upDown: -36000,
+                        ratio: -5.8,
+                    },
+                ],
+            };
+
+            const exs = {
+                exchange: [
+                    {
+                        name: "미국USD",
+                        price: 1296.5,
+                        upDown: 6.0,
+                    },
+                    {
+                        name: "일본JPY",
+                        price: 908.26,
+                        upDown: 7.86,
+                    },
+                    {
+                        name: "유럽연합EUR",
+                        price: 1423.3,
+                        upDown: 8.14,
+                    },
+                    {
+                        name: "중국CNY",
+                        price: 180.41,
+                        upDown: 0.68,
+                    },
+                ],
+                gold: [
+                    {
+                        name: "국제금(08.01)",
+                        price: 1978.8,
+                        upDown: 30.4,
+                    },
+                    {
+                        name: "국내금(08.02)",
+                        price: 81330.84,
+                        upDown: 482.93,
+                    },
+                ],
+            };
+        </script>
+    </body>
+</html>

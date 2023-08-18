@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수의 파라미터 / 리턴타입 사용</h1>
+
+    <ul>
+        <li>파라미터의 개수는 제한이 없으나 많으면 관리가 힘듦</li>
+        <li>파라미터의 타입은 제한이 없지만 전달 된 타입을 그대로 받아서 사용</li>
+        <li>파라미터의 변수명을 지정할 때 외부의 변수명과 중복되어도 상관없다.</li>
+        <li>함수의 리턴 유무에 따라 값을 돌려받을 수 있고, 종료시점도 결정</li>
+    <ul>
+
+    <script>
+        let name = "홍길순";
+        function callname(hername){
+            let hisname = "홍길동";
+            console.log("여자친구의 이름은 : " + hername);
+            console.log("남자친구의 이름은 : " + hisname);
+            console.log("다른 여자친구 : " + name);
+        }
+        callname("김영이");
+        console.log("----------------");
+        callname(name);
+        //함수 안에서 선언된 변수는 함수 밖에서는 사용될 수 없음
+        // callname(hisname);
+        console.log("----------------");
+        function returnFunc(num1,num2){
+            let reselt = num1+num2;
+            return reselt;
+        }
+
+        let sum = returnFunc(10,20);
+        console.log(sum);
+        console.log(`sum: ${returnFunc(20,30)}`);
+
+        // 표현식 함수
+        const myfunc = function(myName){
+            console.log("내 이름은~");
+            return 'Hello~' +myName;
+        }
+
+        myfunc('홍길동');
+        console.log("----------------");
+        console.log(myfunc('영이'));
+
+        // 화살표함수(Arrow Function) : 코드 량을 줄이기 위해서 사용
+
+        console.log("----arrow Function----")
+        const arrowFunc = (param1, param2) =>{
+            let reselt = param1 + param2;
+            return reselt;
+        }
+        const arrowFunc2 = (p1, p2) =>p1 + p;
+
+        const arrowFunc3 = (a,b) =>{
+            console.log('리턴 없음', a+b);
+        }
+        let arrow1 = arrowFunc(10,20);
+        console.log(arrow1);        
+        console.log(arrowFunc2(10,20));
+        arrowFunc3(10,20);        
+`
+        
+    </script>
+</body>
+</html>

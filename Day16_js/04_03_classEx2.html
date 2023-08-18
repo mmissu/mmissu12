@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            class Account {
+                constructor(name, balance) {
+                    this.name = name;
+                    this.balance = balance;
+                }
+                deposit(amount) {
+                    this.balance += amount;
+                }
+                withdraw(amount) {
+                    this.balance -= amount;
+                }
+                transfer(amount, otherAccount) {
+                    this.balance -= amount;
+                    otherAccount.balance += amount;
+                }
+            }
+            let myAccount = new Account("미수", 0);
+            let yourAccount = new Account("순덕", 0);
+            console.log(myAccount.name, " : ", myAccount.balance);
+
+            myAccount.deposit(2000);
+            console.log(myAccount.name, " : ", myAccount.balance);
+
+            myAccount.withdraw(1000);
+            console.log(myAccount.name, " : ", myAccount.balance);
+
+            myAccount.transfer(1000, yourAccount);
+            console.log(myAccount.name, " : ", myAccount.balance);
+            console.log(yourAccount.name, " : ", yourAccount.balance);
+
+            // 생성자 함수 생성자 함수는 클래스를 함수화
+            // 일반 함수와 생성자 함수는 기술적인 차이는 없음.
+            // 1. 반드시 new를 통해 실행
+            // 2. 함수 첫글자는 대문자로
+
+            // function User(name){
+            //     this.name = name;
+            //     this.age = 0;
+            //     this.print = function(){
+            //         console.log(...);
+            //         return;
+            //     }
+            // }
+
+            // let user = new User("영이");
+            // let user2 = new User("철수");
+            // user.age=20; // 변경
+
+            //클래스 (PersonClass)
+            //firstName, lastName, age, address
+            //get personInfo() toString처럼 모든 값을 리턴해주는 get
+
+            class PersonClass {
+                constructor(first, last, age, addr) {
+                    this.firstName = first;
+                    this.lastName = last;
+                    this.age = age;
+                    this.address = addr;
+                }
+
+                get personInfo() {
+                    return `이름 : ${this.firstName}${this.lastName}\n나이 : ${this.age}\n사는곳 : ${this.address}`;
+                }
+            }
+
+            let p = new PersonClass("김", "미수", 33, "인천");
+
+            console.log(p.personInfo);
+
+            //생성자 함수
+            function PersonObject(first, last, age, addr) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.address = addr;
+                this.getPersonInfo = function () {
+                    return `이름 : ${this.firstName}${this.lastName}\n나이 : ${this.age}\n사는곳 : ${this.address}`;
+                };
+            }
+
+            let p2 = new PersonObject("이", "민지", 30, "서울");
+            console.log(p2.getPersonInfo);
+
+            //객체
+
+            const person = {
+                firstName: "",
+                lastName: "",
+                age: "",
+                address: "",
+                //set 함수
+                setInfo: function (first, last, age, add) {
+                    this.firstName = first;
+                    this.lastName = last;
+                    this.age = age;
+                    this.address = add;
+                },
+                get personInfo() {
+                    return `이름 : ${this.firstName}${this.lastName}\n나이 : ${this.age}\n사는곳 : ${this.address}`;
+                },
+                set setFirstName(first) {
+                    this.firstName = first;
+                },
+            };
+        </script>
+    </body>
+</html>

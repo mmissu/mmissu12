@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>
+            1~45까지의 중복되지 않는 숫자 6개를 랜덤으로 추출 후 순서대로
+            출력하기 <br />
+
+            단, set객체를 사용할 것
+        </h1>
+
+        <button type="button" id="random">랜덤번호 6개 출력하기</button>
+
+        <h3 id="randomResult"></h3>
+
+        <button type="button" id="win">
+            당첨번호 7개(마지막은 보너스번호) 출력하기
+        </button>
+
+        <h3 id="winResult"></h3>
+
+        <button type="button" onclick="checkResult()">결과확인</button>
+
+        <h3 id="result"></h3>
+
+        <script>
+            const userRandom = new Set(); //유저 랜덤번호 6개
+
+            const winRandom = new Set(); //당첨번호 6개
+
+            //랜덤번호 6개 출력
+
+            document.getElementById("random").addEventListener("click", () => {
+                userRandom.clear(); //set 값 초기화
+
+                while (userRandom.size < 6) {
+                    userRandom.add(Math.floor(Math.random() * 45) + 1);
+                }
+
+                console.log(userRandom);
+
+                document.getElementById("randomResult").innerText =
+                    Array.from(userRandom).join(" ");
+            });
+
+            //당첨번호 7개 출력
+
+            document.getElementById("win").addEventListener("click", () => {
+                winRandom.clear();
+
+                while (winRandom.size < 7) {
+                    winRandom.add(Math.floor(Math.random() * 45) + 1);
+                }
+
+                console.log(winRandom);
+
+                document.getElementById("winResult").innerText =
+                    Array.from(winRandom).join(" ");
+            });
+
+            // //당첨결과 확인
+
+            function checkResult() {
+                const matchedNumber = Array.from(userRandom).filter((number) =>
+                    winRandom.has(number)
+                );
+
+                const bonusNumber = Array.from(winRandom)[6];
+
+                document.getElementById(
+                    "result"
+                ).innerText = `일치하는 번호 ${matchedNumber.length}개\n`;
+
+                if (matchedNumber.length == 6) {
+                    document.getElementById("result").innerText +=
+                        winRandom.has(bonusNumber) ? " 1등 당첨" : " 2등 당첨";
+                } else if (matchedNumber.length == 5) {
+                    document.getElementById("result").innerText += `3등 당첨.`;
+                } else if (matchedNumber.length == 4) {
+                    document.getElementById("result").innerText += `4등 당첨.`;
+                } else if (matchedNumber.length == 3) {
+                    document.getElementById("result").innerText += `5등 당첨.`;
+                } else {
+                    document.getElementById("result").innerText += `꽝.`;
+                }
+            }
+        </script>
+    </body>
+</html>
+
+﻿

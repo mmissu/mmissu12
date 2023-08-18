@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Document</title>
+
+        <style></style>
+    </head>
+
+    <body>
+        <!--
+
+가위바위보 게임
+
+컴퓨터가 가위1, 바위2, 보3 중 하나를 정하면 나도 가위, 바위, 보 중 하나를 선택
+
+
+가위 바위 보는 버튼
+
+승패에 대한 결과를 출력 총 5번 횟수
+
+컴퓨터는 랜덤으로 가위,바위 보 중 하나를 선택
+
+승률 : (이긴횟수 / 전체 경기 수) *100
+
+-->
+
+        <button type="button" id="bth" onclick="play(1)">
+            <img src="/image/가위.jpg" alt="" />
+        </button>
+
+        <button type="button" id="bth" onclick="play(2)">
+            <img src="/image/바위.jpg" alt="" />
+        </button>
+
+        <button type="button" id="bth" onclick="play(3)">
+            <img src="/image/보.jpg" alt="" />
+        </button>
+
+        <h3 id="result"></h3>
+
+        <script>
+            let win = 0; //승
+
+            let draw = 0; //무
+
+            let lose = 0; //패
+
+            let count = 0; // 횟수
+
+            let result = document.getElementById("result");
+
+            function play(me) {
+                let com = Math.floor(Math.random() * 3) + 1;
+
+                switch (me) {
+                    case 1:
+                        com == 1
+                            ? (gameResult = "비겼습니다.") && draw++
+                            : com == 2
+                            ? (gameResult = "졌습니다.") && lose++
+                            : (gameResult = "이겼습니다.") && win++;
+
+                        count++;
+
+                        break;
+
+                    case 2:
+                        com == 2
+                            ? (gameResult = "비겼습니다.") && draw++
+                            : com == 3
+                            ? (gameResult = "졌습니다.") && lose++
+                            : (gameResult = "이겼습니다.") && win++;
+
+                        count++;
+
+                        break;
+
+                    case 3:
+                        com == 3
+                            ? (gameResult = "비겼습니다.") && draw++
+                            : com == 1
+                            ? (gameResult = "졌습니다.") && lose++
+                            : (gameResult = "이겼습니다.") && win++;
+
+                        count++;
+
+                        break;
+
+                    default:
+                        break;
+                }
+
+                console.log("승:", win, "무:", draw, "패:", lose);
+
+                result.innerHTML = `당신 : ${
+                    me === 1 ? "가위" : me === 2 ? "바위" : "보"
+                } <br>
+
+컴퓨터 : ${com === 1 ? "가위" : com === 2 ? "바위" : "보"} <br>${gameResult}<br>
+
+현재 전적 <br> 승 : ${win} <br> 무 : ${draw} <br> 패 : ${lose} <br> 승률 : ${
+                    (win / count) * 100
+                }%`;
+            }
+            kll;
+        </script>
+    </body>
+</html>
+
+﻿

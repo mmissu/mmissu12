@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .container {
+                width: 700px;
+            }
+            .search {
+                height: 150px;
+                background-color: rgb(172, 197, 194);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 5px 5px 10px rgb(172, 197, 194),
+                    -5px -5px 10px rgb(172, 197, 194),
+                    -5px 5px 10px rgb(172, 197, 194),
+                    5px -5px 10px rgb(172, 197, 194);
+            }
+            .search > input {
+                width: 500px;
+                height: 50px;
+                border: none;
+                border-radius: 5px;
+                padding: 20px;
+                box-sizing: border-box;
+                margin-right: 10px;
+            }
+            .search > button {
+                height: 50px;
+                width: 50px;
+                border: none;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>여행 준비물 점검 목록</h1>
+        </header>
+        <section class="container">
+            <div class="search">
+                <input type="text" id="input" />
+                <button type="button" id="inputList">추가</button>
+            </div>
+            <ul id="checkList">
+                <!-- 여기다 목록 추가 1개씩 -->
+            </ul>
+        </section>
+
+        <script>
+            // input에 입력한 값 가져오기
+            let input = document.getElementById("input").value;
+            console.log(input);
+            //list 저장할 array
+            const listArr = [];
+            //값 추가 할 경로 저장
+            let checkList = document.getElementById("checkList");
+
+            //inputList버튼 클릭시 checkList실행
+            document
+                .getElementById("inputList")
+                .addEventListener("click", () => {
+                    //체크리스트값 초기화
+                    console.log(input);
+                    listArr.push(`<li> ${input}</li>`);
+                    checkList.innerHTML = listArr;
+                });
+        </script>
+    </body>
+</html>

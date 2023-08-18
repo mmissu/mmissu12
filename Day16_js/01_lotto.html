@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button type="button" id="makeRandom">lotto번호 6개 출력</button>
+        <h1 id="printNum"></h1>
+        <button type="button" id="makeRandom2">당첨번호 7개 출력</button>
+        <h1 id="printNum2"></h1>
+        <button type="button" onclick="">당첨확인</button>
+        <button type="reset" onclick="">reset</button>
+        <h1 id="printResult"></h1>
+
+        <script>
+            const rNumArr = [];
+            const rNumSet = new Set();
+
+            const makeRandom = document.getElementById("makeRandom");
+            const makeRandom2 = document.getElementById("makeRandom2");
+            const printNum = document.getElementById("printNum");
+            const printNum2 = document.getElementById("printNum2");
+            const printResult = document.getElementById("printResult");
+
+            makeRandom.addEventListener("click", () => {
+                const rNumSet = new Set();
+                while (rNumSet.size <= 6) {
+                    let rNum = Math.floor(Math.random() * 45) + 1;
+                    rNumSet.add(rNum);
+                }
+                console.log(rNumSet);
+
+                for (const r of rNumSet) {
+                    //for of
+                    rNumArr.push(r);
+                }
+
+                printNum.innerText = rNumArr;
+            });
+
+            makeRandom2.addEventListener("click", () => {
+                const rNumSet = new Set();
+                while (rNumSet.size <= 6) {
+                    let rNum = Math.floor(Math.random() * 45) + 1;
+                    rNumSet.add(rNum);
+                }
+                console.log(rNumSet);
+
+                for (const r of rNumSet) {
+                    //for of
+                    rNumArr.push(r);
+                }
+
+                printNum.innerText = rNumArr;
+            });
+        </script>
+    </body>
+</html>

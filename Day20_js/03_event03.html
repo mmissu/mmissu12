@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button type="button" id="creatBt">엘리먼트 만들기</button>
+        <p id="insertBt"></p>
+
+        <script>
+            document.getElementById("creatBt").addEventListener("click", () => {
+                document.getElementById("insertBt").innerHTML = `
+                <button type="button" id="bt">
+                    생성된 버튼
+                    </button>`;
+            });
+
+            //동적 엘리먼트(이벤트리스너 안의 엘리먼트) 에 이벤트 부여
+            //문서 전체에 리스너를 장착. 엘리먼트를 선택
+            document.addEventListener("click", (e) => {
+                console.log(e.target.id);
+                if (e.target.id == "bt") {
+                    document.getElementById(
+                        "insertBt"
+                    ).innerHTML += `<h3>생성된 버튼을 클릭함</h3>`;
+                }
+            });
+        </script>
+    </body>
+</html>

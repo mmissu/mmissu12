@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>배수 출력하기(1~100중 입력한 숫자의 배수를 출력)</h1>
+
+        <input type="text" id="num" />
+        <button type="button" id="btn" onclick="math()">배수 출력</button>
+        <h3 id="result">배수값 출력</h3>
+
+        <script>
+            function math() {
+                let num = document.getElementById("num").value;
+
+                let result = document.getElementById("result");
+                let count;
+
+                result.innerHTML += `<br>${num}의 배수 출력<br>`;
+                for (let i = 1; i <= 100; i++) {
+                    if (num * i <= 100) {
+                        result.innerHTML += `${num * i} `;
+                        count++;
+                    }
+                }
+                result.innerHTML += `총 ${count}`;
+            }
+            document.getElementById("btn").addEventListener("click", () => {
+                let num = document.getElementById("num").value;
+                document.getElementById("result").innerHTML = multiple(num);
+            });
+        </script>
+    </body>
+</html>

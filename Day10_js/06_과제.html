@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>데이터 리스트</h3>
+    <form action="">
+        <ol>
+            <li>이름 : <input type="text" id="name"></li>
+            <li>거주지 : <input type="text" id="addr"></li>
+            <li>좋아하는 리스트 : 
+                <ul>
+                    <li>1.<input type="text" id="list1"></li>
+                    <li>2.<input type="text" id="list2"></li>
+                    <li>3.<input type="text" id="list3"></li>
+                </ul>
+            </li>
+            <li>이메일 : <input type="email" id="email"></li>
+            <li>반려동물 여부 : 
+                <label for="yes">
+                    <input type="radio" name="pet" id="yes"> 있다
+                <label for="no">
+                    <input type="radio" name="pet" id="no"> 없다
+            </li>
+            <li>지금 가장 원하는 것 : <input type="text" id="wanna"></li>
+        </ol>
+        <button type="button" onclick="insert()">제출</button>
+    </form>
+
+    <h3>전송받은 데이터 출력 <button type="button" onclick="printObj()">출력</button></h3>
+    <table id="printDate" border="1"></table>
+    
+    <script>
+        // html에서 받은 값을 객체에 저장 후 콘솔에 출력
+        function insert() {
+            let name = document.getElementById('name').value;
+            let addr = document.getElementById('addr').value;
+            let list1 = document.getElementById('list1').value;
+            let list2 = document.getElementById('list2').value;
+            let list3 = document.getElementById('list3').value;
+            let email = document.getElementById('email').value;
+            let pet = document.querySelector('input[name="pet"]:checked').id === 'yes' ? "있다." : "없다.";
+            let wanna = document.getElementById('wanna').value;
+            
+            // Create an object to store the data
+            const dateObj = {
+                name: name,
+                addr: addr,
+                favors: {
+                    favor1: list1,
+                    favor2: list2,
+                    favor3: list3,
+                },
+                email: email,
+                pet: pet,
+                wanna: wanna
+            };
+            
+            return dateObj;
+        }
+        
+        function printObj() { 
+            // Call insert() to get the data object       
+            const dateObj = insert();
+            let printDate = document.getElementById('printDate');
+            printDate.innerHTML = `
+            <tr>
+                <th>이름 : </th>
+                <td>${dateObj.name}</td>
+            </tr>
+            <tr>
+                <th>거주지 : </th>
+                <td>${dateObj.addr}</td>
+            </tr>
+            <tr>
+                <th>좋아하는 리스트 : </th>
+                <td><ul>
+                    <li>${dateObj.favors.favor1}</li>
+                    <li>${dateObj.favors.favor2}</li>
+                    <li>${dateObj.favors.favor3}</li>
+                </ul></td>
+            </tr>
+            <tr>
+                <th>이메일 : </th>
+                <td>${dateObj.email}</td>
+            </tr>
+            <tr>
+                <th>반려동물 : </th>
+                <td>${dateObj.pet}</td>
+            </tr>
+            <tr>
+                <th>지금 가장 원하는 것 : </th>
+                <td>${dateObj.wanna}</td>
+            </tr>
+            `;
+        }
+        
+    </script>
+</body>
+</html>

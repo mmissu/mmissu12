@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-input</title>
+</head>
+<body>
+    <h1>form태그를 통해 데이터 받아오기</h1>
+    <ul>
+        <li>input, textarea, select, html element의 속성, 텍스트 데이터 받아오기</li>
+        <li>form태그의 데이터는 value 속성으로 값이 매핑되어 있으므로 value를 호출하면 값을 가져올 수 있음</li>
+        <li>select-option, radio, checkbox value 값은 선택된 값을 가져와야 하기 때문에 value값을 추가하는 작업이 필요</li>
+        <li>value 속성의 데이터는 모두 string으로 처리된다.</li>
+        <li>string 처리된 데이터는 숫자일 경우 숫자로 사용하기 위해서는 변환이 필요</li>
+    </ul>
+    <form action="">
+        <!-- 하나의 묶음이라는 표시 fieldset 안 해도 무방 -->
+        <fieldset>
+            <legend>이벤트를 활용한 데이터 전송</legend>
+            id : <input type="text" id="userid"><br>
+            pw : <input type="password" id="userpw"><br>
+            birth : <input type="date" id="birth"><br>
+            pin : <input type="number" id="pin"><br>
+            <button type="button" onclick="makelist()">전송</button>
+        </fieldset>
+    </form>
+    <h3 id="info"></h3>
+    <ol id="ol" >
+
+    </ol>
+
+    <script>
+        function makelist(){
+            //화면에서 입력한 값을 받아오는 과정
+            let userid = document.getElementById('userid').value;
+            let userpw = document.getElementById('userpw').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+
+            //birth -> date, pin ->number
+            birth = new Date(birth);
+            console.log(typeof birth);
+
+            //String -> 숫자로 변경
+            //parseInt(변수)
+            //Number(정수,실수 무관 숫자로 변경될 수 있는 문자)
+            pin = parseInt(pin);
+            console.log(typeof pin);
+            pin = Number(pin);
+            console.log(typeof pin);
+            
+
+            // li태그로 출력
+            //userid : ~~ (데이터 타입)
+            let ol = document.getElementById('ol');
+            ol.innerHTML = `<li>userid :${userid}</li>`;
+            ol.innerHTML += `<li>pw : ${userpw}</li>`;
+            ol.innerHTML += `<li>birth : ${birth}</li>`;
+            ol.innerHTML += `<li>pin : ${pin}</li>`;
+
+
+
+        }
+        function clickEventInput(){
+            //화면에서 입력한 값을 받아오는 과정
+            let userid = document.getElementById('userid').value;
+            let userpw = document.getElementById('userpw').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+
+            // 하나씩 집어넣는 방식 -> 자료를 각각 써야하는 경우가 많아서 이게 더 자주 쓰임
+            let info = document.getElementById('info');
+            info.innerHTML = `userid :${userid}`;
+            info.innerHTML += `pw : ${userpw}`;
+            info.innerHTML += `birth : ${birth}`;
+            info.innerHTML += `pin : ${pin}`;
+
+            // 한번에 입력하는 방식
+            // let info = document.getElementById('info');
+            // info.innerHTML= `id : ${userid}<br>pw : ${userpw}<br> birth : ${birth}<br> pin : ${pin}`;
+        }
+
+
+
+
+    </script>
+</body>
+</html>

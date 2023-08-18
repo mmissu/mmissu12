@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+<body>
+    이름 : <input type="text" id="name" value="김미수"><br>
+    주민번호 : <input type="text" id="rNum" placeholder="000000-0000000" value="920311-2000000"><br>
+    <button type="button" onclick="infoPrint()">확인</button>
+
+    <h3 id="print">
+        <!-- 이름, 생년월일, 성별, 나이 -->
+
+    </h3>
+    
+    <script>
+        let now = new Date().getFullYear();
+        console.log(now); //연도 추출
+
+        function infoPrint(){
+            let name = document.getElementById('name').value;
+            let rNum = document.getElementById('rNum').value;
+            
+            let gender = rNum.charAt(rNum.indexOf("-")+1)
+
+            // let getNum = (gender =="1" || gender =="3")? "남" : "여";
+            // console.log(getNum);
+
+            let gValue = document.querySelector('gender:checked') === '1' ? "남자" : "여자";
+            console.log(gender);
+            console.log(gValue);
+
+            let birth = rNum.substring(0,(rNum.indexOf("-")));
+            let year = parseInt(birth.substring(0,2));
+            let age= (getNum <=2)? (now-(1900+year)) : (now-(2000+year));
+
+
+            let print = document.getElementById('print');
+            print.innerHTML = `이름 : ${name}
+            생년월일 : ${birth}
+            성별 : ${gValue}
+            나이 : ${age}`;            
+        }
+
+        //오늘날짜 반환
+        let today = new Date();
+        console.log(today);
+        console.log(today.getFullYear());
+        console.log(today.getMonth()+1); //월 0~11월로 +1해야함
+        console.log(today.getDate()); // 일 반환 1~31일        
+        console.log(today.getDay()); // 요일 반환 0~6(토)       
+        
+        //getHours, minutes, seconds : 시 분 초 추출
+
+        let today2 = today.toLocaleDateString();
+        console.log(today2);
+        //현재 날짜를 날짜,시간으로 추출
+
+
+
+    </script>
+</body>
+</html>

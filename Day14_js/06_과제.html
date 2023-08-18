@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .ol {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            구구단 영역(2*1=2 ~9*9=81)내에서 랜덤으로 문제를 내면 정답을 맞추는
+            로직
+        </h1>
+        <ul>
+            <li>총 문제는 10문제 출제</li>
+            <li>문제를 풀 때 정답, 오답의 결과를 나타냄</li>
+            <li>총 10개의 문제중 정답률을 출력</li>
+        </ul>
+
+        <button type="button" onclick="t()">문제출제</button>
+        <!-- 버튼 누르면 문제 출력 -->
+        <ol id="toggle" class="ol">
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+            <li><input type="text" /></li>
+        </ol>
+
+        <button type="button" onclick="ans()">정답확인</button>
+
+        <script>
+            const random1 = [];
+            const random2 = [];
+            const ol = document.getElementById("toggle");
+            const items = ol.getElementsByTagName("li");
+            const ans = ol.getElementsByTagName("input");
+
+            console.log(items);
+
+            function t() {
+                //클릭시 문제 보였다 안보였다
+                let toggle = document.getElementById("toggle");
+                toggle.classList.toggle("ol");
+
+                //문제 생성
+
+                //단 생성
+                for (let i = 0; i <= items.length; i++) {
+                    random1[i] = Math.floor(Math.random() * 9) + 1;
+                }
+                //열 생성
+                for (let i = 0; i <= items.length; i++) {
+                    random2[i] = Math.floor(Math.random() * 9) + 1;
+                }
+                // 각 문제에 입력
+                for (let i = 0; i <= items.length; i++) {
+                    items[i].innerHTML += `${random1[i]}*${random2[i]} = `;
+                }
+                //정답 확인
+                for (let i = 0; i <= items.length; i++) {
+                    if
+                    ans[i].innerText = `${random1[i]}*${random2[i]} :`;
+                }
+            }
+        </script>
+    </body>
+</html>

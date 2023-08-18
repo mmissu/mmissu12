@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문</title>
+</head>
+<body>
+    <h1>for, while, do~while : java와 동일하게 반복문 사용</h1>
+    <ul>
+        <li>for : 반복의 횟수가 명확할 때 사용 <br>
+        for(초기화; 조건식; 증감식){코드;}</li>
+        <li>while, do~while : 반복의 횟수가 명확하지 않을 때 사용 <br>
+        while(조건) {실행문;} <br>
+        do{실행문;}while(조건);</li>
+        <li>모든 조건문은 조건이 참(true)일 때 실행</li>
+        <li>조건이 계속 true라면 무한 루프에 걸릴 수 있음. <br>
+        조건이 실행문 안에서 false로 바뀌거나 break;를 통해 빠져 나감</li>
+    </ul>
+
+    <script>
+        let sum;
+        for(let i=0;i<=10;i++){
+            console.log(i);
+            sum+=i;
+        }
+        console.log(sum);
+        console.log("------------");
+
+        //구구단 3단을 콘솔에 찍어보세요.
+        let num = 3;
+        for(let i=1;i<=9;i++){
+            console.log(`${num}*${i}=${num*i}`);
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

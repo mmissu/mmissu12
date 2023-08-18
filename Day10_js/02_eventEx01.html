@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventEx01</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>성적표</legend>
+            이름 : <input type="text" id="name"><br>
+            국어 : <input type="text" id="kor"><br>
+            영어 : <input type="text" id="eng"><br>
+            수학 : <input type="text" id="math"><br>
+            <!-- 버튼 누르면 합계와 평균 계산 -->
+            <button type="button" onclick="subject()">계산</button>
+            <p id="subject"></p>
+        </fieldset>
+    </form>
+
+    <script>
+        //이름, 국어, 영어, 수학 입력받아
+        //합계와 평균을 출력
+        function subject(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+            kor = parseInt(kor);
+            eng = parseInt(eng);
+            math = parseInt(math);
+
+            let sum = `합계 : ${parseInt(kor)+parseInt(eng)+parseInt(math)}`;
+            let avg = `평균 : ${(parseInt(kor)+parseInt(eng)+parseInt(math))/3}`;
+            console.log(sum);
+            console.log(avg);
+
+            let subject = document.getElementById('subject');
+            subject.innerHTML = `${name}의 성적표<br>국어 : ${kor}점<br>영어 : ${eng}점<br>수학 : ${math}점<br>${sum}<br>${avg}`;
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

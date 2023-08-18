@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h3>가위바위보 게임 10번 실행 후 승률 출력</h3>
+        <button type="button" id="btn">승률 출력</button>
+        <h3>10번 게임의 승률은<span id="result"></span> % 입니다.</h3>
+
+        <script>
+            //가위바위보 com=>랜덤, player => 랜덤
+            //승률계산 (승리/ (10-무승부)*100)
+
+            document.getElementById("btn").addEventListener("click", () => {
+                let win = 0; //승
+                let draw = 0; //무
+                let lose = 0; //패
+
+                for (let i = 0; i <= 10; i++) {
+                    let me = Math.floor(Math.random() * 3) + 1;
+                    let com = Math.floor(Math.random() * 3) + 1;
+
+                    switch (me) {
+                        case 1:
+                            com == 1 ? draw++ : com == 2 ? lose++ : win++;
+                            break;
+                        case 2:
+                            com == 2 ? draw++ : com == 3 ? lose++ : win++;
+                            break;
+                        case 3:
+                            com == 3 ? draw++ : com == 1 ? lose++ : win++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                console.log("승:", win, "무:", draw, "패:", lose);
+            });
+        </script>
+    </body>
+</html>

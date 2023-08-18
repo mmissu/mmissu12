@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Document</title>
+
+        <style>
+            body {
+                display: flex;
+
+                align-items: center;
+
+                flex-direction: column;
+
+                background-color: black;
+
+                color: wheat;
+
+                animation: gradient 4s 1;
+                height: 1000px;
+            }
+
+            .members {
+                display: flex;
+            }
+
+            .members > div {
+                flex-direction: column;
+
+                padding: 50px;
+
+                padding-top: 150px;
+            }
+
+            h1 {
+                font-size: 70px;
+                animation: rotate 2s linear 1;
+                position: absolute;
+            }
+            .members > div > h2 {
+                animation: shadow 1s infinite;
+            }
+            h4 {
+                font-size: 20px;
+                margin-top: 200px;
+            }
+
+            .members > div > h2,
+            h1 {
+                color: rgb(255, 255, 255);
+
+                text-shadow: 5px 5px 10px wheat;
+
+                font-style: italic;
+            }
+
+            @keyframes shadow {
+                0% {
+                    text-shadow: 5px 5px 10px wheat;
+                }
+                50% {
+                    text-shadow: 5px 5px 10px wheat, -5px -5px 10px wheat,
+                        5px -5px 10px wheat, -5px 5px 10px wheat;
+                }
+                100% {
+                    text-shadow: 5px 5px 10px wheat;
+                }
+            }
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                    font-size: 70px;
+                }
+                30% {
+                    transform: rotate(360deg);
+                    font-size: 70px;
+                }
+                60% {
+                    transform: rotate(0deg);
+                    font-size: 70px;
+                }
+                90% {
+                    font-size: 100px;
+                }
+                100% {
+                    font-size: 100px;
+                }
+            }
+
+            @keyframes gradient {
+                0% {
+                    background: linear-gradient(to bottom right, black);
+                }
+                50% {
+                    background: linear-gradient(
+                        to bottom right,
+                        white,
+                        black,
+                        black
+                    );
+                }
+                100% {
+                    background: black;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="squadName"></h1>
+
+        <h4 id="homeTown"></h4>
+
+        <div class="members" id="members">
+            <div class="members1">
+                <h2 id="name1"></h2>
+
+                <p id="age1"></p>
+
+                <p id="secretIdentity1"></p>
+
+                <ul id="powers1"></ul>
+            </div>
+
+            <div class="members2">
+                <h2 id="name2"></h2>
+
+                <p id="age2"></p>
+
+                <p id="secretIdentity2"></p>
+
+                <ul id="powers2"></ul>
+            </div>
+
+            <div class="members3">
+                <h2 id="name3"></h2>
+
+                <p id="age3"></p>
+
+                <p id="secretIdentity3"></p>
+
+                <ul id="powers3"></ul>
+            </div>
+        </div>
+
+        <!-- createElement : 엘리먼트 생성 -->
+
+        <script>
+            // 데이터 가져오기
+
+            fetch(
+                "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"
+            )
+                .then((resp) => resp.json())
+
+                .then((json) => {
+                    document.getElementById("squadName").innerText =
+                        json.squadName;
+
+                    document.getElementById(
+                        "homeTown"
+                    ).innerText = `HomeTown : ${json.homeTown} // Formed : ${json.formed}`;
+
+                    for (let i = 1; i <= 3; i++) {
+                        document.getElementById(`name${i}`).innerText =
+                            json.members[i - 1].name;
+
+                        document.getElementById(`age${i}`).innerText = `Age: ${
+                            json.members[i - 1].age
+                        }`;
+
+                        document.getElementById(
+                            `secretIdentity${i}`
+                        ).innerText = `Secret Identity: ${
+                            json.members[i - 1].secretIdentity
+                        }`;
+
+                        for (let j = 1; ; j++) {
+                            if (
+                                json.members[i - 1].powers[j - 1] == undefined
+                            ) {
+                                break;
+                            }
+
+                            document.getElementById(
+                                `powers${i}`
+                            ).innerHTML += `<li>${
+                                json.members[i - 1].powers[j - 1]
+                            }</li>`;
+                        }
+                    }
+                })
+
+                .catch((err) => console.log(err));
+        </script>
+    </body>
+</html>
+
+<!-- https://java119.tistory.com/54 -->
+
+﻿

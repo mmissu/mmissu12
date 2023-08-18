@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .java{
+            width: 500px;
+            color: white;
+            font-size: 50px;
+            background: salmon;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading" class="java">javascript</h1>
+    <h3 id="main" class="">위의 글자를 클릭해 보세요.</h3>
+
+    <script>
+        let heading = document.getElementById('heading');
+        heading.onclick=function(){
+            heading.classList.toggle('java');
+            // heading.classList.add('java')s;
+        }
+        
+
+
+        let main = document.getElementById('main');
+        main.onclick=function(){
+            main.style.setProperty("font-size","30px");
+            //css의 스타일 속성 변경 ("속성명","값")
+        }
+
+
+
+    </script>
+</body>
+</html>

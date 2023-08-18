@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <fieldset>
+            가격 <input type="text" id="price">원 <br>
+            할인율 <input type="text" id="dc">% <br>
+            <button type="button" onclick="click()">계산</button>
+            <p id="print"></p>
+        </fieldset>
+    </form>
+    <script>
+        //가격과 할인율을 입력받아 할인금액과 지불금액을 구하시오.
+        // ex)) 50000원 5%할인 할인금액 2500 지불금액 47500
+        function click(){
+            //값 가져오기
+            let price = document.getElementById('price').value;
+            let dc = document.getElementById('dc').value;
+
+            price = parseInt('price');
+            dc = Number('dc');
+
+            let dc_Percent =price*(dc*0.01);
+            let dc_Price = price-dc_Percent;
+
+            console.log(dc_Percent,dc_Price);
+            let print = document.getElementById('print');
+            print.innerText = `할인금액 : ${dc_Percent}`;
+            print.innerText += `지불금액 : ${dc_Price}`;
+
+
+
+        }
+
+
+        
+    </script>
+</body>
+</html>

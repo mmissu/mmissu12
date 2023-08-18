@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>window 메서드 종류</h1>
+        <ul>
+            <li>window.open('url','window name','option(size,scroll..)')</li>
+            <li>window.close():닫을 때</li>
+            <li>
+                alert() : 경고창 띄움. prompt : input 받을 수 있는 창 <br />
+                confirm() : 확인/취소 창
+            </li>
+        </ul>
+
+        <button type="button" onclick="openWindow()">열기</button>
+        <button type="button" onclick="closeWindow()">닫기</button>
+        <button type="button" onclick="alert1()">alert</button>
+        <button type="button" onclick="confirm1()">confirm</button>
+        <button type="button" onclick="prompt1()">prompt</button>
+        <p id="msg"></p>
+
+        <script>
+            let myWindow;
+            let msg = document.getElementById("msg");
+            function openWindow() {
+                myWindow = window.open(
+                    "",
+                    "myWindow",
+                    "width=200px , height=300px"
+                );
+            }
+            function closeWindow() {
+                if (myWindow) {
+                    myWindow.close();
+                }
+            }
+
+            function alert1() {
+                let alert = alert("alert 연습");
+                msg.innerText = alert;
+            }
+            function confirm1() {
+                let confirm = confirm("confirm 연습");
+                if (confirm) {
+                    msg.innerText = "확인";
+                } else {
+                    msg.innerText = "취소";
+                }
+            }
+            function prompt1() {
+                let name = prompt("이름을 입력해주세요.");
+                msg.innerText = name + "님 어서오세요.";
+            }
+        </script>
+    </body>
+</html>

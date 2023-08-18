@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #1f1f1f1f;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .calculator {
+                border: 1px solid #333;
+                background-color: rgb(255, 196, 189);
+                padding: 20px;
+                padding-top: 30px;
+                border-radius: 10px;
+            }
+            .calculator form {
+                display: grid;
+                grid-template-columns: repeat(4, 65px);
+                grid-auto-rows: 65px;
+                gap: 5px;
+            }
+            .calculator form button,
+            input {
+                font-size: 1rem;
+                /* font-weight: bold; */
+                border: 2px solid black;
+                cursor: pointer;
+                padding: 5px;
+            }
+            .calculator form button:hover {
+                box-shadow: 1px 1px 2px #333;
+            }
+            .calculator form .clear {
+                background-color: salmon;
+            }
+            .calculator form .operator {
+                background-color: rgb(255, 172, 163);
+            }
+            .calculator form .dot {
+                background-color: salmon;
+            }
+            .calculator form input[type="text"] {
+                grid-column: span 4;
+                text-align: right;
+                background-color: white;
+                margin-bottom: 10px;
+            }
+            .calculator form .clear {
+                grid-column: span 3;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            .calculator form .result {
+                grid-column: span 2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <form name="forms">
+                <input type="text" id="output" name="output" />
+                <button type="button" class="clear" value="C">C</button>
+                <button type="button" class="operator" value="/">/</button>
+                <button type="button" class="number" value="1">1</button>
+                <button type="button" class="number" value="2">2</button>
+                <button type="button" value="3">3</button>
+                <button type="button" class="operator" value="*">*</button>
+                <button type="button" value="4">4</button>
+                <button type="button" value="5">5</button>
+                <button type="button" value="6">6</button>
+                <button type="button" class="operator" value="+">+</button>
+                <button type="button" value="7">7</button>
+                <button type="button" value="8">8</button>
+                <button type="button" value="9">9</button>
+                <button type="button" class="operator" value="-">-</button>
+                <button type="button" class="dot" value=".">.</button>
+                <button type="button" value="0">0</button>
+                <button type="button" class="operator result" value="=">
+                    =
+                </button>
+            </form>
+        </div>
+
+        <script>
+            let calc = "";
+            let result = "";
+            const calcInput = [];
+            document.addEventListener("click", (e) => {
+                let text = document.getElementById("output");
+                let inputValue = e.target.value;
+                console.log(inputValue);
+                switch (inputValue) {
+                    case "C":
+                        text.value = 0;
+                        calc = "";
+                        calcInput.length = 0;
+                        break;
+                    case "/":
+                    case "*":
+                    case "+":
+                    case "-":
+                        text.value = inputValue;
+                        calcInput.push(calc);
+                        calcInput.push(inputValue);
+                        calc = "";
+                        console.log(calcInput);
+                        break;
+                    case "=":
+                        calcInput.push(calc);
+                        result = parseFloat(calcInput[0]);
+
+                        for (let i = 1; i < calcInput.length; i++) {
+                            //연산자 다음 값 변수
+                            const operand = parseFloat(calcInput[i + 1]);
+
+                            //값이 연산자 일 경우 계산
+                            switch (calcInput[i]) {
+                                case "+":
+                                    result += operand;
+                                    break;
+                                case "-":
+                                    result -= operand;
+                                    break;
+                                case "*":
+                                    result *= operand;
+                                    break;
+                                case "/":
+                                    result /= operand;
+                                    break;
+                            }
+                        }
+
+                        text.value = result;
+                        break;
+                    case ".":
+                    case "1":
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                    case "9":
+                    case "0":
+                        text.value += inputValue;
+                        calc += inputValue;
+                        console.log(calcInput);
+                        break;
+                }
+            });
+        </script>
+    </body>
+</html>

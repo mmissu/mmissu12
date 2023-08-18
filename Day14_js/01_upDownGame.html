@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        <button type="button" onclick="computerNum()"">랜덤숫자 생성 버튼</button>
+        <button type="button" onclick="window.location.reload()">다시시도</button>
+    </h1>
+    <h3 id="printMsg"></h3>
+    <h1>
+        <input type="text" id="myGuess">
+        <button type="button" onclick="compareNum()">정답제출</button>
+    </h1>
+    <h3 id="result"></h3>
+
+
+    <script>
+        let comNum = 0;
+        let count = 0; //입력 횟수
+        // let myNum = document.getElementById('myGuess').value; //아무것도 입력되지 않은 빈 영역이기 때문에 인식 불가능.
+
+        function computerNum(){
+            comNum = Math.floor(Math.random()*50)+1;
+            document.getElementById('printMsg').innerText =
+            `컴퓨터가 랜덤수 (1~50)을 생성하였습니다.`;
+
+        }
+
+        function compareNum() { //숫자비교
+            let str = '';
+
+            //횟수 제한 걸 경우 
+            if(count<=5){
+
+                let myNum = Number(document.getElementById('myGuess').value); //숫자로 변환
+                count++; //횟수 증가
+                if(myNum>0 && myNum<50){
+                    if(comNum==myNum){
+                        str =`시도 횟수 ${count}, 정답입니다. 컴퓨터의 숫자는 ${comNum}였습니다.`;
+                    }else if(comNum>myNum){
+                        str =`시도 횟수 ${count}, Up`;
+                    }else(comNum<myNum)
+                        str =`시도 횟수 ${count}, Down`;
+                    
+                }else str = `1~50사이의 숫자만 가능합니다.`;
+                
+            }
+            else {
+                str = `시도횟수 ${count}회가 초과되었습니다. 게임 종료`;
+            }
+            document.getElementById('result').innerText =str;
+
+        }
+    </script>
+</body>
+</html>
